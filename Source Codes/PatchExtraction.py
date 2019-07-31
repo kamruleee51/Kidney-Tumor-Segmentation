@@ -15,6 +15,8 @@ import cv2
 import os 
 from sklearn.feature_extraction.image import extract_patches_2d
 
+from utilsFunc import mask_overlay_org
+
 PatchSavePath = 'D:\KiTS Project\kits19\scripts'
 
 NumberPatch =500
@@ -42,7 +44,9 @@ for i in range(len(dataPath)):
             cv2.imwrite(path,patches_current_slice_org[j,:,:])
             
             path = PatchSavePath + '\\Patches\\' + dataPath[i][-10:]+'_'+str(k)+str(j)+'_mask_.png'
-            cv2.imwrite(path,patches_current_slice_mask[j,:,:])
+            cv2.imwrite(path,120*patches_current_slice_mask[j,:,:])
+            
+            kidney_overlay, tumor_overlay=mask_overlay_org(patches_current_slice_org[j,:,:],patches_current_slice_mask[j,:,:])
             
 #        break
     
