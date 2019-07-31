@@ -34,8 +34,8 @@ for i in range(len(dataPath)):
     tumor[tumor==2]=255
 
 
-    for k in range (300,400,1):
-#    for k in range (len(org_vol[:,1,1])):
+#    for k in range (300,400,1):
+    for k in range (len(org_vol[:,1,1])):
         
 
 
@@ -87,7 +87,7 @@ for i in range(len(dataPath)):
         print('Case-> '+str(i)+'   '+'slice-> '+str(k))
         
 #    if i==5:
-    break
+#    break
     
     
     
