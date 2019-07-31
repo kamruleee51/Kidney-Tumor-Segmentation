@@ -13,7 +13,8 @@ import numpy as np
 from skimage import data, color, io, img_as_float
 import cv2
 import os 
-cwd = os.getcwd()
+
+cwd = 'D:\KiTS Project\kits19\scripts'
 
 dataPath = glob.glob('D:\KiTS Project\kits19\scripts\dataTrain\*');
 dataPath.sort()
