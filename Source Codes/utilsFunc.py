@@ -9,6 +9,10 @@ from pathlib import Path
 
 import nibabel as nib
 
+import numpy as np
+
+from skimage import data, color, io, img_as_float
+
 
 def get_full_case_id(cid):
     #cid is the integer of the image name
@@ -57,3 +61,30 @@ def load_case(cid):
     vol = load_volume(cid)
     seg = load_segmentation(cid)
     return vol, seg
+
+
+def mask_overlay_org (org,mask_kidney,mask_tumor):
+    
+    img_color = np.dstack((org, org, org))
+    
+    kidney_color = np.zeros_like(img_color)
+    kidney_color[mask_kidney!=0] = [0, 0, 255] # Blue block
+        
+    tumor_color = np.zeros_like(img_color)
+    tumor_color[mask_tumor!=0] = [0, 255, 0] # Blue block
+        
+    tumor_overlay = color.rgb2hsv(img_color)
+    kidney_overlay = tumor_overlay.copy()
+    
+    kidney_color = color.rgb2hsv(kidney_color)
+    tumor_color = color.rgb2hsv(tumor_color)
+        
+    kidney_overlay[:,:, 0] = kidney_color[:,:, 0]
+    kidney_overlay[:,:, 1] = kidney_color[:,:, 1] * 0.6
+    kidney_overlay = color.hsv2rgb(kidney_overlay)
+    
+    tumor_overlay[:,:, 0] = tumor_color[:,:, 0]
+    tumor_overlay[:,:, 1] = tumor_color[:,:, 1] * 0.6
+    tumor_overlay = color.hsv2rgb(tumor_overlay)
+    
+    return kidney_overlay, tumor_overlay
