@@ -19,7 +19,7 @@ from utilsFunc import mask_overlay_org
 
 PatchSavePath = 'D:\KiTS Project\kits19\scripts'
 
-NumberPatch =100
+NumberPatch =30
 
 dataPath = glob.glob('D:\KiTS Project\kits19\scripts\dataTrain\*');
 dataPath.sort()
@@ -56,8 +56,8 @@ for i in range(len(dataPath)):
 
     
     
-    if i==5:
-        break
+#    if i==5:
+#        break
 
 
     
