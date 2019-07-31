@@ -5,7 +5,6 @@ Created on Tue Jul 30 22:43:57 2019
 @author: kamrul
 """
 
-from utilsFunc import get_full_case_id, get_case_path, load_case
 
 import glob
 import nibabel as nib
@@ -34,12 +33,11 @@ for i in range(len(dataPath)):
     tumor[tumor==2]=255
 
 
-#    for k in range (300,400,1):
-    for k in range (len(org_vol[:,1,1])):
+    for k in range (300,400,1):
+#    for k in range (len(org_vol[:,1,1])):
         
 
-#        kidney_color = np.dstack((kidney[k,:,:], kidney[k,:,:], kidney[k,:,:]))
-#        tumor_color = np.dstack((tumor[k,:,:], tumor[k,:,:], ))
+
         img_color = np.dstack((org_vol[k,:,:], org_vol[k,:,:], org_vol[k,:,:]))
 
         kidney_color = np.zeros_like(img_color)
@@ -87,8 +85,8 @@ for i in range(len(dataPath)):
         
         print('Case-> '+str(i)+'   '+'slice-> '+str(k))
         
-    if i==5:
-        break
+#    if i==5:
+    break
     
     
     
