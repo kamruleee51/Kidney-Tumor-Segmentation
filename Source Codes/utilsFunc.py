@@ -63,7 +63,16 @@ def load_case(cid):
     return vol, seg
 
 
-def mask_overlay_org (org,mask_kidney,mask_tumor):
+def mask_overlay_org (org,mask):
+    
+    mask_tumor = mask.copy()
+    mask_kidney = mask.copy()
+    
+    mask_kidney[mask_kidney!=1]=0
+    mask_kidney[mask_kidney==1]=255
+    
+    mask_tumor[mask_tumor!=2]=0
+    mask_tumor[mask_tumor==2]=255
     
     img_color = np.dstack((org, org, org))
     
